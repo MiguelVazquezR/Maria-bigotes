@@ -9,7 +9,7 @@
           <p class="uppercase mb-1 text-sm">Pago móvil</p>
           <i class="fa-solid fa-money-bill text-4xl"></i>
         </button>
-        <a :href="route('order-now')" class="flex flex-col items-center mt-5">
+        <a href="{{route('menu')}}" class="flex flex-col items-center mt-5">
           <p class="uppercase mb-1 text-sm">Menú</p>
           <i class="fa-solid fa-utensils text-4xl"></i>
         </a>
@@ -29,10 +29,10 @@
           <p class="uppercase mb-1 text-sm">Código QR</p>
           <i class="fa-solid fa-qrcode text-4xl"></i>
         </button>
-        <button class="flex flex-col items-center mt-5">
+        <a href="{{ route('rate.create') }}" class="flex flex-col items-center mt-5">
           <p class="uppercase mb-1 text-sm">Calificanos</p>
           <i class="fa-solid fa-pen-to-square text-4xl"></i>
-        </button>
+        </a>
         <button class="flex flex-col items-center mt-5">
           <p class="uppercase mb-1 text-sm">Instagram</p>
           <i class="fa-brands fa-instagram text-4xl"></i>

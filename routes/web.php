@@ -2,6 +2,8 @@
 
 use App\Http\Livewire\OrderNow;
 use App\Http\Livewire\Main\Index;
+use App\Http\Livewire\Menu\Menu;
+use App\Http\Livewire\Rate\CreateRate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/order-now', OrderNow::class)->name('order-now');
+
+Route::get('/menu', Menu::class)->name('menu');
+
+Route::get('/rate', CreateRate::class)->name('rate.create');

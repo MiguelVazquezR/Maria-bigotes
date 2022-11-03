@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rate extends Model
+class Promo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'last_names', 'email', 'comments'];
-
+    protected $fillable = ['title', 'description'];
 }
