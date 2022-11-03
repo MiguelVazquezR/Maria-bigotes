@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Livewire\OrderNow\Index;
+use App\Http\Livewire\OrderNow;
+use App\Http\Livewire\Main\Index;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +18,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-// Route::get('/', Index::class);
+Route::get('/order-now', OrderNow::class)->name('order-now');

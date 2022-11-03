@@ -14,7 +14,21 @@
           @livewireStyles
     </head>
     <body class="antialiased">
-        @livewire('main.index')
+        <section class="px-6 py-4">
+            <figure>
+              <img src="{{asset('images/Logo–Maria-Bigotes.png')}}" class="h-28 mx-auto" alt="logo">
+            </figure>
+
+        {{ $slot }}
+            
         @livewireScripts
+        <footer class="flex items-center justify-center space-x-7 mt-8">
+            <a href="#"><i class="fa-sharp fa-solid fa-house"></i> Inicio</a> 
+            <a href="#"><span>Maria Bigotes</span></a> 
+            <a href="#"><i class="fa-solid fa-arrow-left"></i></i> Regresar</a> 
+    
+        </footer>
     </body>
+
+    
 </html>
