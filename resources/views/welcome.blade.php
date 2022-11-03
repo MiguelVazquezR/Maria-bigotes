@@ -14,6 +14,10 @@
           @livewireStyles
     </head>
     <body class="antialiased">
+        <section class="px-6 py-4">
+            <figure>
+              <img src="{{asset('images/Logo–Maria-Bigotes.png')}}" class="h-28 mx-auto" alt="logo">
+            </figure>
         @livewire('main.index')
         @livewireScripts
     </body>

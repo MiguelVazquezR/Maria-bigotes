@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\OrderNow;
 
 use Livewire\Component;
 
@@ -8,6 +8,6 @@ class OrderNow extends Component
 {
     public function render()
     {
-        return view('livewire.order-now');
+        return view('livewire.order-now.order-now');
     }
 }

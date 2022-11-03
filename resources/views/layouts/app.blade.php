@@ -23,9 +23,9 @@
             
         @livewireScripts
         <footer class="flex items-center justify-center space-x-7 mt-8">
-            <a href="#"><i class="fa-sharp fa-solid fa-house"></i> Inicio</a> 
+            <a href="/"><i class="fa-sharp fa-solid fa-house"></i> Inicio</a> 
             <a href="#"><span>Maria Bigotes</span></a> 
-            <a href="#"><i class="fa-solid fa-arrow-left"></i></i> Regresar</a> 
+            <a href="{{ back() }}"><i class="fa-solid fa-arrow-left"></i> Regresar</a> 
     
         </footer>
     </body>
