@@ -11,11 +11,6 @@ class Index extends Component
         redirect()->route($route_name);
     }
 
-    public function equis()
-    {
-        
-    }
-
     public function render()
     {
         return view('livewire.main.index');

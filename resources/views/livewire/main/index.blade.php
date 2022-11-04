@@ -1,7 +1,7 @@
 <div>
-    <span class="absolute inset-0 bg-gray-500 opacity-75 flex justify-center items-center" wire:loading wire:target="equis">
+    {{-- <span class="absolute inset-0 bg-gray-500 opacity-75 flex justify-center items-center" wire:loading wire:target="equis">
         <i class="fa-solid fa-pizza-slice text-white text-4xl animate-spin"></i>
-    </span>
+    </span> --}}
     <a href="{{ route('order-now') }}"
         class="shadow-md shadow-gray-600 border border-gray-500 w-11/12 mx-auto flex justify-center items-center text-xl rounded-lg border px-5 py-2 mt-3">
         <i class="fa-solid fa-motorcycle mr-4"></i>

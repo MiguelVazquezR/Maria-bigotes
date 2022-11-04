@@ -11,6 +11,6 @@ class Menu extends Component
     {
         $products = Product::all();
 
-        return view('livewire.menu.menu', compact('products'));
+        return view('livewire.menu.menu', compact('products'))->layout('layouts.guest');
     }
 }

@@ -8,6 +8,6 @@ class SelectedProduct extends Component
 {
     public function render()
     {
-        return view('livewire.order-now.selected-product');
+        return view('livewire.order-now.selected-product')->layout('layouts.guest');
     }
 }

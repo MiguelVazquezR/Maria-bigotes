@@ -28,6 +28,6 @@ class CreateRate extends Component
 
     public function render()
     {
-        return view('livewire.rate.create-rate');
+        return view('livewire.rate.create-rate')->layout('layouts.guest');
     }
 }
