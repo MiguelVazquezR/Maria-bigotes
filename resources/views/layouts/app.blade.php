@@ -21,7 +21,7 @@
 
         {{ $slot }}
             
-        <footer class="flex items-center justify-center space-x-7 mt-8">
+        <footer class="flex items-center justify-center space-x-7 mt-8 shadow-md shadow-gray-600/70 rounded-lg py-3 px-3">
             <a href="/"><i class="fa-sharp fa-solid fa-house"></i> Inicio</a> 
             <a href="#"><span>Maria Bigotes</span></a> 
             <a href="#"><i class="fa-solid fa-arrow-left"></i></i> Regresar</a> 

@@ -1,6 +1,6 @@
 <div>
   
-      <a href="{{route('order-now')}}" class="shadow-md shadow-gray-600 border border-gray-500 w-11/12 mx-auto flex justify-center items-center text-xl rounded-lg border px-5 py-2 mt-3">
+      <a href="{{route('order-now')}}" class="bg-blue-600 text-white font-semibold shadow-md shadow-gray-600 border border-gray-500 w-11/12 mx-auto flex justify-center items-center text-xl rounded-lg border px-5 py-2 mt-7">
         <i class="fa-solid fa-motorcycle mr-4"></i>
         <span class="uppercase">Pide ahora</span>
       </a>
@@ -25,10 +25,10 @@
           <p class="uppercase mb-1 text-sm">Galería</p>
           <i class="fa-solid fa-image text-4xl"></i>
         </button>
-        <button class="flex flex-col items-center mt-5">
+        <a href="{{route('qr')}}" class="flex flex-col items-center mt-5">
           <p class="uppercase mb-1 text-sm">Código QR</p>
           <i class="fa-solid fa-qrcode text-4xl"></i>
-        </button>
+        </a>
         <a href="{{ route('rate.create') }}" class="flex flex-col items-center mt-5">
           <p class="uppercase mb-1 text-sm">Calificanos</p>
           <i class="fa-solid fa-pen-to-square text-4xl"></i>
