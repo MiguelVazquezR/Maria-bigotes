@@ -1,4 +1,6 @@
 import './bootstrap';
+import '../css/basics.css';
+import '../css/inputs.css';
 
 import Alpine from 'alpinejs';
 

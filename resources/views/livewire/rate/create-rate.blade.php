@@ -1,7 +1,7 @@
 <div>
     <h1 class="font-bold text-2xl ml-4 text-center">Califícanos</h1>
     <input type="text" wire:model.defer="name"
-        class="h-[2rem] w-full px-3 py-1 outline-none mt-2 border border-gray-400 focus:ring rounded-md shadow-md placeholder:text-gray-400"
+        class="input"
         placeholder="Nombre(s)">
     <x-input-error for="name" />
     <input type="text" wire:model.defer="last_names"

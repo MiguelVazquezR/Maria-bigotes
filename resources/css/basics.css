@@ -1,0 +1,11 @@
+.btn-primary{
+    @apply px-3 py-1 bg-blue-600 text-white font-bold rounded-md disabled:opacity-50;
+}
+
+.btn-secondary{
+    @apply px-3 py-1 bg-gray-100 text-gray-600 border border-gray-300 font-bold rounded-md disabled:opacity-50;
+}
+
+.btn-danger{
+    @apply px-3 py-1 bg-red-600 text-white font-bold rounded-md disabled:opacity-50;
+}
