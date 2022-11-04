@@ -10,7 +10,7 @@ use App\Http\Livewire\Rate\CreateRate;
 use App\Http\Livewire\OrderNow\SelectedProduct;
 use App\Http\Livewire\Promo\Admin\IndexPromo;
 use App\Http\Livewire\Promociones\Promos;
-
+use App\Http\Livewire\Qr\QrCode;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +34,7 @@ Route::get('/rate', CreateRate::class)->name('rate.create');
 Route::get('/selected-product', SelectedProduct::class)->name('selected-product');
 Route::get('/promos', Promos::class)->name('promos');
 Route::get('/contact', ContactUs::class)->name('contact');
+Route::get('/qr', QrCode::class)->name('qr');
 
 Route::get('/menu/admin', IndexMenu::class)->name('menu.admin.index');
 Route::get('/promos/admin', IndexPromo::class)->name('promo.admin.index');
