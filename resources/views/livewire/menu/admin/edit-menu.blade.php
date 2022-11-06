@@ -6,8 +6,14 @@
     </x-slot>
     <form wire:submit.prevent="update" class="mt-6 px-4">
         <input wire:model.defer="product.name" type="text" class="input" placeholder="Nombre">
+        <x-input-error for="prduct.name" />
+
         <textarea wire:model.defer="product.description" class="input" placeholder="Descripción"></textarea>
+        <x-input-error for="prduct.description" />
+
         <input wire:model.defer="product.price" type="number" step="0.10" class="input" placeholder="Precio">
+        <x-input-error for="prduct.price" />
+
         <select wire:model.defer="product.category_id" class="input">
             <option value="0" selected disabled>-- Seleccione --</option>
             @foreach ($categories as $category)

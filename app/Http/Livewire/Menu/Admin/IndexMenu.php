@@ -24,7 +24,7 @@ class IndexMenu extends Component
 
     public function render()
     {
-        $products = Product::all();
+        $products = Product::latest()->paginate(10);
 
         return view('livewire.menu.admin.index-menu', compact('products'));
     }

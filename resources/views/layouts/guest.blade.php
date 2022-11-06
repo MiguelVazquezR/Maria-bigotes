@@ -20,6 +20,8 @@
     <div class="font-sans text-gray-900 antialiased">
         {{ $slot }}
     </div>
+
+    @livewire('footer.footer-bar')
 </body>
 
 </html>

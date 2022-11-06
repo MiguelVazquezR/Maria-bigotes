@@ -1,13 +1,13 @@
 <div>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Menú
-        </h2>
+        <div class="flex justify-between items-center">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                Menú
+            </h2>
+            <a role="button" href="{{ route('menu.admin.create') }}" class="btn-primary">+ Nuevo</a>
+        </div>
     </x-slot>
     <div class="mx-auto">
-        <div class="flex justify-end px-8">
-            <a role="button" href="{{ route('menu.admin.create') }}" class="btn-primary mt-3">+ Nuevo</a>
-        </div>
         <div class="flex items-center justify-center">
             <div class="w-11/12 lg:w-1/3 py-4 px-3">
                 @foreach ($products as $product)
@@ -48,4 +48,8 @@
             </div>
         </x-slot>
     </x-jet-confirmation-modal>
+
+    <div class="px-8 py-2">
+        {{ $products->links() }}
+    </div>
 </div>

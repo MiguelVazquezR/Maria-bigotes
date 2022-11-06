@@ -10,9 +10,12 @@ use App\Http\Livewire\Menu\Admin\IndexMenu;
 use App\Http\Livewire\Menu\Menu;
 use App\Http\Livewire\Rate\CreateRate;
 use App\Http\Livewire\OrderNow\SelectedProduct;
+use App\Http\Livewire\Promo\Admin\CreatePromo;
+use App\Http\Livewire\Promo\Admin\EditPromo;
 use App\Http\Livewire\Promo\Admin\IndexPromo;
-use App\Http\Livewire\Promociones\Promos;
+use App\Http\Livewire\Promo\Promos;
 use App\Http\Livewire\Qr\QrCode;
+use App\Http\Livewire\Rate\Admin\IndexRate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,8 +46,10 @@ Route::get('/menu/admin/create', CreateMenu::class)->middleware('auth')->name('m
 Route::get('/menu/admin/{product}/edit', EditMenu::class)->middleware('auth')->name('menu.admin.edit');
 
 Route::get('/promos/admin', IndexPromo::class)->middleware('auth')->name('promo.admin.index');
+Route::get('/promos/admin/create', CreatePromo::class)->middleware('auth')->name('promo.admin.create');
+Route::get('/promos/admin/{promo}/edit', EditPromo::class)->middleware('auth')->name('promo.admin.edit');
 
-Route::get('/rates/admin', IndexPromo::class)->middleware('auth')->name('rate.admin.index');
+Route::get('/rates/admin', IndexRate::class)->middleware('auth')->name('rate.admin.index');
 
 Route::middleware([
     'auth:sanctum',

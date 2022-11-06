@@ -22,6 +22,8 @@ class EditMenu extends Component
         $this->validate();
 
         $this->product->save();
+
+        return redirect()->route('menu.admin.index');
     }
 
     public function render()
