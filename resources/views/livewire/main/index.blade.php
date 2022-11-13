@@ -9,10 +9,6 @@
         <span class="uppercase">Pide ahora</span>
     </a>
     <div class="grid grid-cols-3 gap-4 mt-6">
-        <a class="flex flex-col items-center mt-5 px-1 py-2 rounded-lg shadow-md shadow-gray-500 bg-gray-300">
-            <p class="uppercase mb-1 text-sm font-semibold">Pago móvil</p>
-            <i class="fa-solid fa-money-bill text-4xl text-green-600"></i>
-        </a>
         <a href="{{ route('menu') }}"
             class="flex flex-col items-center mt-5 px-1 py-2 rounded-lg shadow-md shadow-gray-500 bg-gray-300">
             <p class="uppercase mb-1 text-sm font-semibold">Menú</p>
@@ -27,10 +23,6 @@
             class="flex flex-col items-center mt-5 px-1 py-2 rounded-lg shadow-md shadow-gray-500 bg-gray-300">
             <p class="uppercase mb-1 text-sm font-semibold">Contáctanos</p>
             <i class="fa-solid fa-address-book text-4xl text-blue-600"></i>
-        </a>
-        <a class="flex flex-col items-center mt-5 px-1 py-2 rounded-lg shadow-md shadow-gray-500 bg-gray-300">
-            <p class="uppercase mb-1 text-sm font-semibold">Galería</p>
-            <i class="fa-solid fa-image text-4xl text-sky-400"></i>
         </a>
         <a href="{{ route('qr') }}"
             class="flex flex-col items-center mt-5 px-1 py-2 rounded-lg shadow-md shadow-gray-500 bg-gray-300">

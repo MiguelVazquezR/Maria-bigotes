@@ -36,7 +36,7 @@ Route::get('/', function () {
 Route::get('/order-now', OrderNow::class)->name('order-now');
 Route::get('/menu', Menu::class)->name('menu');
 Route::get('/rate', CreateRate::class)->name('rate.create');
-Route::get('/selected-product', SelectedProduct::class)->name('selected-product');
+Route::get('/selected-product/{product}', SelectedProduct::class)->name('selected-product');
 Route::get('/promos', Promos::class)->name('promos');
 Route::get('/contact', ContactUs::class)->name('contact');
 Route::get('/qr', QrCode::class)->name('qr');
