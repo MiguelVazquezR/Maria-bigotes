@@ -1,0 +1,3 @@
+<div>
+    Pagar ahora
+</div>

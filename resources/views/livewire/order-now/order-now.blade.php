@@ -1,7 +1,6 @@
 <div>
-    <div class="flex justify-between mt-5">
+    <div class="flex justify-between items-center mt-5">
         <span class="uppercase">Pide Ahora</span>
-        <i class="fa-solid fa-cart-plus text-2xl"></i>
     </div>
 
     <section class="flex flex-col mt-7 space-y-2">

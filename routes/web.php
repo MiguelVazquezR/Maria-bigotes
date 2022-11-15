@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Livewire\Admin\Login;
+use App\Http\Livewire\Cart\EditCart;
+use App\Http\Livewire\Cart\ShowCart;
 use App\Http\Livewire\Contact\ContactUs;
 use App\Http\Livewire\OrderNow\OrderNow;
 use App\Http\Livewire\Main\Index;
@@ -10,6 +12,7 @@ use App\Http\Livewire\Menu\Admin\IndexMenu;
 use App\Http\Livewire\Menu\Menu;
 use App\Http\Livewire\Rate\CreateRate;
 use App\Http\Livewire\OrderNow\SelectedProduct;
+use App\Http\Livewire\Payment\Pay;
 use App\Http\Livewire\Promo\Admin\CreatePromo;
 use App\Http\Livewire\Promo\Admin\EditPromo;
 use App\Http\Livewire\Promo\Admin\IndexPromo;
@@ -40,6 +43,9 @@ Route::get('/selected-product/{product}', SelectedProduct::class)->name('selecte
 Route::get('/promos', Promos::class)->name('promos');
 Route::get('/contact', ContactUs::class)->name('contact');
 Route::get('/qr', QrCode::class)->name('qr');
+Route::get('/my-cart', ShowCart::class)->name('cart.show');
+Route::get('/my-cart/{index}/edit', EditCart::class)->name('cart.edit');
+Route::get('/payment-from-cart', Pay::class)->name('pay');
 
 Route::get('/menu/admin', IndexMenu::class)->middleware('auth')->name('menu.admin.index');
 Route::get('/menu/admin/create', CreateMenu::class)->middleware('auth')->name('menu.admin.create');
@@ -50,6 +56,7 @@ Route::get('/promos/admin/create', CreatePromo::class)->middleware('auth')->name
 Route::get('/promos/admin/{promo}/edit', EditPromo::class)->middleware('auth')->name('promo.admin.edit');
 
 Route::get('/rates/admin', IndexRate::class)->middleware('auth')->name('rate.admin.index');
+
 
 Route::middleware([
     'auth:sanctum',

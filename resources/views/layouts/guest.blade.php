@@ -15,17 +15,27 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-     <!-- Styles -->
-     @livewireStyles
+    <!-- Styles -->
+    @livewireStyles
 </head>
 
 <body>
-    <div class="font-sans text-gray-900 antialiased px-6">
+    <div class="font-sans text-gray-900 antialiased px-6 mb-10">
+        <div class="text-right mt-2">
+            @livewire('cart.cart')
+        </div>
         {{ $slot }}
     </div>
 
     @livewire('footer.footer-bar')
     @livewireScripts
+    <script>
+        window.onload = function() {
+            Livewire.emit('getCartItemsNumber');
+            Livewire.emit('getCartItems', 'cart.show-cart');
+            Livewire.emit('getCartItems', 'cart.edit-cart');
+        };
+    </script>
 </body>
 
 </html>

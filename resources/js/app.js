@@ -1,4 +1,5 @@
 import './bootstrap';
+import './cart';
 import '../css/basics.css';
 import '../css/inputs.css';
 
