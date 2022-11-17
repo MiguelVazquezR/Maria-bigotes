@@ -45,7 +45,7 @@ Route::get('/contact', ContactUs::class)->name('contact');
 Route::get('/qr', QrCode::class)->name('qr');
 Route::get('/my-cart', ShowCart::class)->name('cart.show');
 Route::get('/my-cart/{index}/edit', EditCart::class)->name('cart.edit');
-Route::get('/payment-from-cart', Pay::class)->name('pay');
+Route::get('/payment', Pay::class)->name('pay');
 
 Route::get('/menu/admin', IndexMenu::class)->middleware('auth')->name('menu.admin.index');
 Route::get('/menu/admin/create', CreateMenu::class)->middleware('auth')->name('menu.admin.create');

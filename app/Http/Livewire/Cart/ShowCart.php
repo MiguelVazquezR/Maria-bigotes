@@ -27,6 +27,11 @@ class ShowCart extends Component
         }
     }
 
+    public function deleteCartItem($index)
+    {
+        $this->emit('deleteCartItem', $index);
+    }
+
     public function render()
     {
         return view('livewire.cart.show-cart')->layout('layouts.guest');

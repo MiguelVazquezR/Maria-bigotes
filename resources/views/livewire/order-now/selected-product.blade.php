@@ -25,11 +25,16 @@
         <p class="my-2 font-semibold">Total: ${{ number_format($total, 2) }}</p>
 
         @if ($quantity)
-            <button wire:click="$emit('addToCart',{{ $product->id }}, {{ $quantity }}, '{{ $notes }}')" class="rouded-lg bg-blue-600 text-lg text-white font-bold rounded-md py-2 px-4 mt-3">
-                Agregar al carrito
-            </button>
+            <button wire:click="addToCart({{ $product->id }}, {{ $quantity }}, '{{ $notes }}')"
+                wire:loading.attr="disabled" wire:target="addToCart" class="btn-primary mt-3 mr-2">
+                <i wire:loading wire:target="addToCart" class="fa-solid fa-pizza-slice animate-spin mr-2"></i>
+                <span wire:loading wire:target="addToCart">Agregando...</span>
+                <span wire:loading.remove wire:target="addToCart">Agregar al carrito</span>
+            </button> 
         @else
-            <button wire:click="$emit('addToCart',{{ $product->id }}, {{ $quantity }}, '{{ $notes }}')" class="rouded-lg bg-blue-600 text-lg text-white font-bold rounded-md py-2 px-4 mt-3 disabled:opacity-60" disabled>
+            <button wire:click="addToCart({{ $product->id }}, {{ $quantity }}, '{{ $notes }}')"
+                class="rouded-lg bg-blue-600 text-lg text-white font-bold rounded-md py-2 px-4 mt-3 disabled:opacity-60"
+                disabled>
                 Agregar al carrito
             </button>
         @endif

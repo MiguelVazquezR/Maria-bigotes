@@ -17,6 +17,7 @@
                             <div class="flex-1 inline-flex items-center">
                                 <i class="fa-solid fa-utensils mr-3"></i>
                                 <p>{{ $product->category->name }}</p>
+                                <a href="{{ route('selected-product', $product->id) }}" class="btn-primary ml-10">Seleccionar</a>
                             </div>
                         </div>
                     </div>

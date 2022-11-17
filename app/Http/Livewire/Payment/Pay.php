@@ -7,9 +7,25 @@ use Livewire\Component;
 
 class Pay extends Component
 {
-    public $product,
-        $quantity,
-        $notes;
+    public $cart_items = [],
+        $total = 0.0;
+
+    protected $listeners = [
+        'syncCartItems'
+    ];
+
+    public function syncCartItems($items)
+    {
+        foreach ($items as $item) {
+            $product = Product::find($item['product_id']);
+            $this->cart_items[] = [
+                'product' => $product,
+                'quantity' => $item['quantity'],
+                'notes' => $item['notes'],
+            ];
+            $this->total += $product->price * $item['quantity'];
+        }
+    }
 
     public function render()
     {

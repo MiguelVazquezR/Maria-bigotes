@@ -31,6 +31,12 @@ class SelectedProduct extends Component
         }
     }
 
+    public function addToCart($product_id, $quantity, $notes)
+    {
+        $this->emit('addToCart', $product_id, $quantity, $notes);
+        return redirect()->route('menu');
+    }
+
     public function render()
     {
         return view('livewire.order-now.selected-product')->layout('layouts.guest');

@@ -29,11 +29,13 @@
 
     @livewire('footer.footer-bar')
     @livewireScripts
+    <script src="https://js.stripe.com/v3/"></script>
     <script>
         window.onload = function() {
             Livewire.emit('getCartItemsNumber');
             Livewire.emit('getCartItems', 'cart.show-cart');
             Livewire.emit('getCartItems', 'cart.edit-cart');
+            Livewire.emit('getCartItems', 'payment.pay');
         };
     </script>
 </body>
