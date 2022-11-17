@@ -19,12 +19,14 @@
     @livewireStyles
 </head>
 
-<body>
-    <div class="font-sans text-gray-900 antialiased px-6 mb-10">
-        <div class="text-right mt-2">
+<body class="bg-gray-100">
+    <div class="font-sans text-gray-900 antialiased mb-10">
+        <div class="text-right bg-black py-3 pr-3 rounded-b-xl fixed w-full z-10">
             @livewire('cart.cart')
         </div>
-        {{ $slot }}
+        <div class="px-6 pt-16">
+            {{ $slot }}
+        </div>
     </div>
 
     @livewire('footer.footer-bar')

@@ -3,7 +3,7 @@
         <i class="fa-solid fa-pizza-slice text-white text-4xl animate-spin"></i>
     </span> --}}
     <a href="{{ route('order-now') }}"
-        class="shadow-md shadow-gray-600 border-gray-500 w-11/12 mx-auto flex justify-center items-center text-xl rounded-lg border px-5 py-2 mt-3">
+        class="shadow-md shadow-gray-600 bg-black text-white w-11/12 mx-auto flex justify-center items-center text-xl rounded-lg px-5 py-2 mt-3">
 
         <i class="fa-solid fa-motorcycle mr-4"></i>
         <span class="uppercase">Pide ahora</span>

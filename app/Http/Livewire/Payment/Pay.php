@@ -8,7 +8,8 @@ use Livewire\Component;
 class Pay extends Component
 {
     public $cart_items = [],
-        $total = 0.0;
+        $total = 0.0,
+        $loading = true;
 
     protected $listeners = [
         'syncCartItems'
@@ -25,6 +26,8 @@ class Pay extends Component
             ];
             $this->total += $product->price * $item['quantity'];
         }
+
+        $this->loading = false;
     }
 
     public function render()

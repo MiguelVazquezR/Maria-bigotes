@@ -8,6 +8,6 @@
                 {{ $items_number }}
             </div>
         @endif
-        <i class="fas fa-shopping-cart text-2xl"></i>
+        <i class="fas fa-shopping-cart text-2xl text-white"></i>
     </a>
 </div>

@@ -13,7 +13,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
           @livewireStyles
     </head>
-    <body class="antialiased">
+    <body class="antialiased bg-gray-100">
         <section class="px-6 py-4">
             <figure>
               <img src="{{asset('images/Logo–Maria-Bigotes.png')}}" class="h-28 mx-auto" alt="logo">

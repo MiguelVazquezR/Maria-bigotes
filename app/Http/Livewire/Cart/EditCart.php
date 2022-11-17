@@ -11,7 +11,8 @@ class EditCart extends Component
         $product,
         $notes,
         $index,
-        $total;
+        $total,
+        $loading = true;
 
     protected $rules = [
         'quantity' => 'required|numeric|min:1',
@@ -41,6 +42,7 @@ class EditCart extends Component
         $this->quantity = $items[$this->index]['quantity'];
         $this->notes = $items[$this->index]['notes'];
         $this->total += $this->product->price * $this->quantity;
+        $this->loading = false;
     }
 
     public function update()
