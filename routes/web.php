@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use App\Http\Livewire\Admin\Login;
 use App\Http\Livewire\Cart\EditCart;
 use App\Http\Livewire\Cart\ShowCart;
@@ -57,6 +58,9 @@ Route::get('/promos/admin/{promo}/edit', EditPromo::class)->middleware('auth')->
 
 Route::get('/rates/admin', IndexRate::class)->middleware('auth')->name('rate.admin.index');
 
+Route::post('/process-payment', [PaymentController::class, 'processPay']);
+Route::get('/payment-error', [PaymentController::class, 'error'])->name('payment.error');
+Route::get('/payment-success', [PaymentController::class, 'success'])->name('payment.success');
 
 Route::middleware([
     'auth:sanctum',

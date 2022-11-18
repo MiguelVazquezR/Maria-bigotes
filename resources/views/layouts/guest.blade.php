@@ -29,9 +29,8 @@
         </div>
     </div>
 
-    @livewire('footer.footer-bar')
-    @livewireScripts
     <script src="https://js.stripe.com/v3/"></script>
+    @livewire('footer.footer-bar')
     <script>
         window.onload = function() {
             Livewire.emit('getCartItemsNumber');
@@ -40,6 +39,8 @@
             Livewire.emit('getCartItems', 'payment.pay');
         };
     </script>
+
+    @livewireScripts
 </body>
 
 </html>
