@@ -1,15 +1,17 @@
 <x-jet-action-section>
     <x-slot name="title">
-        {{ __('Browser Sessions') }}
+        Sesiones de navegadores
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Manage and log out your active sessions on other browsers and devices.') }}
+        Gestiona y cierra sesiones activas en navegadores de otros dispositivos.
     </x-slot>
 
     <x-slot name="content">
         <div class="max-w-xl text-sm text-gray-600">
-            {{ __('If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.') }}
+            Si es necesario, tu puedes cerrar sesión de todos los dispositivos en los que hayas ingresado a tu cuenta.
+            Algunas de tus más recientes sesiones están listadas abajo. Si sientes que tu cuenta puede estar
+            comprometida, deberías actualizar tu contraseña.
         </div>
 
         @if (count($this->sessions) > 0)
@@ -19,19 +21,28 @@
                     <div class="flex items-center">
                         <div>
                             @if ($session->agent->isDesktop())
-                                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-gray-500">
-                                    <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-gray-500">
+                                    <path
+                                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                    </path>
                                 </svg>
                             @else
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-gray-500">
-                                    <path d="M0 0h24v24H0z" stroke="none"></path><rect x="7" y="4" width="10" height="16" rx="1"></rect><path d="M11 5h2M12 17v.01"></path>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                    class="w-8 h-8 text-gray-500">
+                                    <path d="M0 0h24v24H0z" stroke="none"></path>
+                                    <rect x="7" y="4" width="10" height="16" rx="1">
+                                    </rect>
+                                    <path d="M11 5h2M12 17v.01"></path>
                                 </svg>
                             @endif
                         </div>
 
                         <div class="ml-3">
                             <div class="text-sm text-gray-600">
-                                {{ $session->agent->platform() ? $session->agent->platform() : __('Unknown') }} - {{ $session->agent->browser() ? $session->agent->browser() : __('Unknown') }}
+                                {{ $session->agent->platform() ? $session->agent->platform() : Desconocido }} -
+                                {{ $session->agent->browser() ? $session->agent->browser() : Desconocido }}
                             </div>
 
                             <div>
@@ -39,9 +50,9 @@
                                     {{ $session->ip_address }},
 
                                     @if ($session->is_current_device)
-                                        <span class="text-green-500 font-semibold">{{ __('This device') }}</span>
+                                        <span class="text-green-500 font-semibold">Este dispositivo</span>
                                     @else
-                                        {{ __('Last active') }} {{ $session->last_active }}
+                                        Última actividad {{ $session->last_active }}
                                     @endif
                                 </div>
                             </div>
@@ -53,29 +64,26 @@
 
         <div class="flex items-center mt-5">
             <x-jet-button wire:click="confirmLogout" wire:loading.attr="disabled">
-                {{ __('Log Out Other Browser Sessions') }}
+                Cierra sesión en todos los dispositivos
             </x-jet-button>
 
             <x-jet-action-message class="ml-3" on="loggedOut">
-                {{ __('Done.') }}
+                Hecho.
             </x-jet-action-message>
         </div>
 
         <!-- Log Out Other Devices Confirmation Modal -->
         <x-jet-dialog-modal wire:model="confirmingLogout">
             <x-slot name="title">
-                {{ __('Log Out Other Browser Sessions') }}
+                Cierra sesión en todos los dispositivos
             </x-slot>
 
             <x-slot name="content">
-                {{ __('Please enter your password to confirm you would like to log out of your other browser sessions across all of your devices.') }}
-
-                <div class="mt-4" x-data="{}" x-on:confirming-logout-other-browser-sessions.window="setTimeout(() => $refs.password.focus(), 250)">
-                    <x-jet-input type="password" class="mt-1 block w-3/4"
-                                placeholder="{{ __('Password') }}"
-                                x-ref="password"
-                                wire:model.defer="password"
-                                wire:keydown.enter="logoutOtherBrowserSessions" />
+                Por favor, ingresa tu contraseña para confirmar que quieres cerrar sesión en todos los dispositivos.
+                <div class="mt-4" x-data="{}"
+                    x-on:confirming-logout-other-browser-sessions.window="setTimeout(() => $refs.password.focus(), 250)">
+                    <x-jet-input type="password" class="mt-1 block w-3/4" placeholder="Contraseña" x-ref="password"
+                        wire:model.defer="password" wire:keydown.enter="logoutOtherBrowserSessions" />
 
                     <x-jet-input-error for="password" class="mt-2" />
                 </div>
@@ -83,13 +91,11 @@
 
             <x-slot name="footer">
                 <x-jet-secondary-button wire:click="$toggle('confirmingLogout')" wire:loading.attr="disabled">
-                    {{ __('Cancel') }}
+                    Cancelar
                 </x-jet-secondary-button>
 
-                <x-jet-button class="ml-3"
-                            wire:click="logoutOtherBrowserSessions"
-                            wire:loading.attr="disabled">
-                    {{ __('Log Out Other Browser Sessions') }}
+                <x-jet-button class="ml-3" wire:click="logoutOtherBrowserSessions" wire:loading.attr="disabled">
+                    Cierra sesión en todos los dispositivos
                 </x-jet-button>
             </x-slot>
         </x-jet-dialog-modal>
