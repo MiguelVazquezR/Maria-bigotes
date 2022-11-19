@@ -26,10 +26,10 @@ class PaymentController extends Controller
         try {
             $user->charge($request->total * 100, $request->paymentMethod);
         } catch (Exception $e) {
-            return route('payment.error');
+            return response()->json(['route' => route('payment.error'), 'success' => false]);
         }
 
-        return route('payment.success');
+        return response()->json(['route' => route('payment.success'), 'success' => true]);
     }
 
     public function error()

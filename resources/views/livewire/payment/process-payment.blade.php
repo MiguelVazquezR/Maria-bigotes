@@ -1,6 +1,9 @@
 <div>
     {{-- stripe --}}
-    <div class="border-2 border-gray-300 rounded-md px-4 py-2 my-4 dark:bg-slate-800 dark:text-gray-300">
+    <div class="border-2 border-gray-300 rounded-md px-4 py-2 my-4 dark:bg-slate-800 dark:text-gray-300 relative">
+        <div id="spinner" class="absolute top-0 right-0 w-full h-full bg-gray-100 bg-opacity-30 justify-center items-center" style="display: none;">
+            <x-spinner size="16" />
+        </div>
         <div class="lg:flex justify-between items-center">
             <h1 class="mb-3 font-bold">Método de Pago</h1>
             <img src="{{ asset('images/we-accept.png') }}" class="h-8" />
@@ -51,7 +54,7 @@
 
         cardForm.addEventListener("submit", async (e) => {
             e.preventDefault();
-
+            document.getElementById('spinner').style.display = 'flex';
             const {
                 paymentMethod,
                 error
@@ -65,6 +68,7 @@
             );
 
             if (error) {
+                document.getElementById('spinner').style.display = 'none';
                 document.getElementById("card-error").textContent = error.message;
             } else {
                 axios.post('/process-payment', {
@@ -72,7 +76,12 @@
                     email: document.getElementById('email').value,
                     name: document.getElementById('card-holder-name').value,
                     total: {{ $total }},
-                }).then((response) => { window.location.replace(response.data) });
+                }).then((response) => { 
+                    if(response.data.success)
+                        localStorage.removeItem('m_b_cart');
+                        
+                    window.location.replace(response.data.route);
+                 });
             }
         });
     </script>

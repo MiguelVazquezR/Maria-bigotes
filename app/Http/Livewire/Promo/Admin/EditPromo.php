@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Promo\Admin;
 
 use App\Models\Promo;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class EditPromo extends Component
 {

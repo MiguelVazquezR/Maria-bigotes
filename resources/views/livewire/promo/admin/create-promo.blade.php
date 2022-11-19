@@ -10,6 +10,11 @@
 
         <textarea wire:model.defer="description" class="input" placeholder="Descripción"></textarea>
         <x-input-error for="description" />
+
+        <div class="mt-2">
+            <input wire:model.defer="image" type="file" class="input" id="{{$image_id}}">
+            <x-input-error for="image" />
+        </div>
         
         <button type="submit" wire:loading.attr="disabled" wire:target="store" class="btn-primary mt-3 mr-2">
             <i wire:loading wire:target="store" class="fa-solid fa-pizza-slice animate-spin mr-2"></i>

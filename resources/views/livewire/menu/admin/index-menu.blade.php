@@ -10,10 +10,10 @@
     <div class="mx-auto">
         <div class="flex items-center justify-center">
             <div class="w-11/12 lg:w-1/3 py-4 px-3">
-                @foreach ($products as $product)
+                @forelse ($products as $product)
                     <div class="bg-gray-100 border border-gray-300 shadow-xl rounded-lg overflow-hidden mb-6 relative">
                         <div class="bg-cover bg-center h-56 p-4"
-                            style="background-image: url(https://images.unsplash.com/photo-1475855581690-80accde3ae2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80)">
+                            style="background-image: url({{ $product->getFirstMedia()->getUrl() }})">
                         </div>
                         <div class="p-4">
                             <p class="uppercase tracking-wide text-sm font-bold text-gray-700">{{ $product->name }}</p>
@@ -26,10 +26,16 @@
                                 <p>{{ $product->category->name }}</p>
                             </div>
                         </div>
-                        <a href="{{ route('menu.admin.edit', $product) }}" class="flex justify-center items-center w-8 h-8 rounded-full bg-white absolute top-1 opacity-75 right-11" title="Editar"><i class="fa-solid fa-pencil text-blue-600"></i></a>
-                        <button wire:click="prepareItemToDelete({{$product}})" class="w-8 h-8 rounded-full bg-white absolute top-1 opacity-75 right-1" title="Eliminar"><i class="fa-solid fa-trash-can text-red-600"></i></button>
+                        <a href="{{ route('menu.admin.edit', $product) }}"
+                            class="flex justify-center items-center w-8 h-8 rounded-full bg-white absolute top-1 opacity-75 right-11"
+                            title="Editar"><i class="fa-solid fa-pencil text-blue-600"></i></a>
+                        <button wire:click="prepareItemToDelete({{ $product }})"
+                            class="w-8 h-8 rounded-full bg-white absolute top-1 opacity-75 right-1" title="Eliminar"><i
+                                class="fa-solid fa-trash-can text-red-600"></i></button>
                     </div>
-                @endforeach
+                @empty
+                    <p class="text-gray-500 text-center text-sm mt-6 bg-gray-100">No hay productos en el menú para mostrar</p>
+                @endforelse
             </div>
         </div>
     </div>

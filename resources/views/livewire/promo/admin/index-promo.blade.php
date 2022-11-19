@@ -10,9 +10,7 @@
     <section>
         @forelse ($promos as $promo)
             <div class="container w-11/12 mt-5 mx-auto relative">
-                <img class="object-cover w-full h-56 rounded-lg lg:w-64"
-                    src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                    alt="">
+                <img class="object-cover w-full h-56 rounded-lg lg:w-64" src="{{ $promo->getFirstMedia()->getUrl() }}">
 
                 <div class="flex flex-col justify-between py-3 lg:mx-6">
                     <h1 class="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">{{ $promo->title }}
