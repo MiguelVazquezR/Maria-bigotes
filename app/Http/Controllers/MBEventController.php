@@ -48,7 +48,9 @@ class MBEventController extends Controller
      */
     public function show($id)
     {
-        //
+        $event = MBEvent::find($id);
+
+        return response()->json($event);
     }
 
     /**

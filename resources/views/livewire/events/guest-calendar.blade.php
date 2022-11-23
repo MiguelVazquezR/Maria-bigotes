@@ -5,11 +5,74 @@
         <x-spinner size="16" />
     </div>
 
-    <div id="guest-calendar"></div>
+    <div id="guest-calendar" style="font-size: 10px;"></div>
+
+    @if ($show_event)
+        <div class="text-xs text-gray-700 mb-20 mt-2 bg-white rounded-md px-4 py-2 shadow-lg">
+            <div>
+                <x-jet-label value="Nombre de quien reserva" />
+                <p class="text-[10px] tetx-gray-500">{{ $name }}</p>
+            </div>
+            <div>
+                <x-jet-label value="Número de teléfono" />
+                <p class="text-[10px] tetx-gray-500">{{ $phone_number }}</p>
+            </div>
+            <div>
+                <x-jet-label value="Dirección del evento (calle, número, colonia)" />
+                <p class="text-[10px] tetx-gray-500">{{ $address }}</p>
+            </div>
+            <div>
+                <x-jet-label value="Código postal" />
+                <p class="text-[10px] tetx-gray-500">{{ $postal_code }}</p>
+            </div>
+            <div>
+                <x-jet-label value="Fecha del servicio" />
+                <p class="text-[10px] tetx-gray-500">{{ $event_start . ' -- ' . $event_end }}</p>
+            </div>
+            <div>
+                <x-jet-label value="Tipo de evento" />
+                <p class="text-[10px] tetx-gray-500">{{ $event_type_id }}</p>
+            </div>
+            <div>
+                <x-jet-label value="Tipo de servicio" />
+                <p class="text-[10px] tetx-gray-500">{{ $service_type_id }}</p>
+            </div>
+            <div>
+                <x-jet-label value="Platillos" />
+                <p class="text-[10px] tetx-gray-500">{{ $pack_type_id }}</p>                
+            </div>
+            <div>
+                <x-jet-label value="Número exacto de invitados" />
+                <p class="text-[10px] tetx-gray-500">{{ $number_invites }}</p>
+            </div>
+            <div>
+                <x-jet-label value="Comentarios" />
+                <p class="text-[10px] tetx-gray-500">{{ $comments ?? '--' }}</p>
+            </div>
+            <div class="text-right">
+                <button wire:click="$set('show_confirmation_modal', true)" class="btn-danger mt-3">Eliminar reservación</button>
+            </div>
+        </div>
+    @endif
+
+    <x-jet-confirmation-modal wire:model="show_confirmation_modal">
+        <x-slot name="title">
+            Eliminar reservación
+        </x-slot>
+        <x-slot name="content">
+            ¿Seguro(a) que desea eliminarla reservación?
+        </x-slot>
+        <x-slot name="footer">
+            <div class="flex justify-end">
+                <button wire:click="delete" class="mr-2 btn-danger">Continuar</button>
+                <button wire:click="$set('show_confirmation_modal', false)" class="btn-secondary">Cancelar</button>
+            </div>
+        </x-slot>
+    </x-jet-confirmation-modal>
 
     <x-jet-dialog-modal wire:model="open_modal">
         <x-slot name="title">
-            <p class="font-bold text-xl">Reservar</p>
+            <p class="font-bold text-xl">Reservar el <span class="text-blue-700">{{ $event_date?->isoFormat('dddd DD MMM, YYYY') }}</span></p>
         </x-slot>
         <x-slot name="content">
             <form wire:submit.prevent>
