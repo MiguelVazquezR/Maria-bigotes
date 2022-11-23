@@ -29,17 +29,17 @@ class MBEvent extends Model
 
     protected $dates = ['event_date'];
 
-    public function event()
+    public function eventType()
     {
         return $this->belongsTo(EventType::class);
     }
 
-    public function service()
+    public function serviceType()
     {
         return $this->belongsTo(ServiceType::class);
     }
     
-    public function pack()
+    public function packType()
     {
         return $this->belongsTo(PackType::class);
     }

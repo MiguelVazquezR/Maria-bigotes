@@ -12,7 +12,7 @@ function createGuestCalendar() {
     guest_calendar = new FullCalendar.Calendar(calendarEl1, {
         initialView: 'dayGridMonth',
         locale: 'es',
-        events: 'http://localhost:8000/events',
+        events: '/events',
         dateClick: function () { Livewire.emitTo('events.guest-calendar', 'openModal') },
     });
     guest_calendar.render();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EventResource;
 use App\Models\MBEvent;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class MBEventController extends Controller
      */
     public function index()
     {
-        $events = MBEvent::all();
+        $events = EventResource::collection(MBEvent::all());
         return response()->json($events);
     }
 

@@ -66,6 +66,7 @@ Route::get('/payment-error', [PaymentController::class, 'error'])->name('payment
 Route::get('/payment-success', [PaymentController::class, 'success'])->name('payment.success');
 
 Route::resource('/events', MBEventController::class);
+// Route::get('/all-events', [MBEventController::class, 'showAll']);
 
 Route::get('/calendar', GuestCalendar::class)->name('calendar.guest');
 Route::get('/admin-calendar', AdminCalendar::class)->name('calendar.admin');
