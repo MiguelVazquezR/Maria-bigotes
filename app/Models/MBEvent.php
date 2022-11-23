@@ -14,6 +14,7 @@ class MBEvent extends Model
         'name',
         'phone_number',
         'event_date',
+        'event_start',
         'address',
         'postal_code',
         'address_references',
