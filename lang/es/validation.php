@@ -138,6 +138,7 @@ return [
     ],
     'attributes' => [
         'name' => 'nombre',
+        'last_names' => 'apellidos',
         'age' => 'edad',
         'title' => 'título',
         'description' => 'descripción',
@@ -153,5 +154,15 @@ return [
         'subject' => 'titulo',
         'content' => 'descripción',
         'is_error' => 'tipo de reporte',
+        'phone_number' => 'número de teléfono',
+        'address' => 'dirección',
+        'postal_code' => 'código postal',
+        'event_start' => 'hora del servicio',
+        'event_type_id' => 'tipo de evento',
+        'service_type_id' => 'tipo de servicio',
+        'pack_type_id' => 'platillos',
+        'number_invites' => 'número de invitados',
+        'how_hear_about_us' => 'cómo te enteraste de nosotros',
+        'requirements_read' => 'requerimientos leídos',
     ],
 ];

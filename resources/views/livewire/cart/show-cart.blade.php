@@ -15,10 +15,13 @@
             <div class="flex items-center justify-center">
                 <div class="max-w-sm w-full sm:w-1/2 lg:w-1/3 py-4 px-3">
                     @forelse ($cart_items as $index => $item)
+                        @php
+                            $product = App\Models\Product::find($item['product']['id']);
+                        @endphp
                         <div
                             class="bg-gray-100 border border-gray-300 shadow-xl rounded-lg overflow-hidden mb-6 relative">
                             <div class="bg-cover bg-center h-56 p-4"
-                                style="background-image: url(https://images.unsplash.com/photo-1475855581690-80accde3ae2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80)">
+                                style="background-image: url({{$product?->getFirstMedia()->getUrl()}}">
                             </div>
                             <div class="p-4">
                                 <p class="uppercase tracking-wide text-sm font-bold text-gray-700">

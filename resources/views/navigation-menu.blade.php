@@ -4,6 +4,7 @@
         'Menú' => 'menu.admin.index',
         'Promociones' => 'promo.admin.index',
         'Calificaciones' => 'rate.admin.index',
+        'Calendario de eventos' => 'calendar.admin',
     ],
 ])
 

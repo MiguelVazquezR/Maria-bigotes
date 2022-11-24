@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\MBEventController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Livewire\Admin\Login;
 use App\Http\Livewire\Cart\EditCart;
 use App\Http\Livewire\Cart\ShowCart;
 use App\Http\Livewire\Contact\ContactUs;
+use App\Http\Livewire\Events\AdminCalendar;
+use App\Http\Livewire\Events\GuestCalendar;
 use App\Http\Livewire\OrderNow\OrderNow;
 use App\Http\Livewire\Main\Index;
 use App\Http\Livewire\Menu\Admin\CreateMenu;
@@ -61,6 +64,13 @@ Route::get('/rates/admin', IndexRate::class)->middleware('auth')->name('rate.adm
 Route::post('/process-payment', [PaymentController::class, 'processPay']);
 Route::get('/payment-error', [PaymentController::class, 'error'])->name('payment.error');
 Route::get('/payment-success', [PaymentController::class, 'success'])->name('payment.success');
+
+Route::resource('/events', MBEventController::class);
+// Route::get('/all-events', [MBEventController::class, 'showAll']);
+
+Route::get('/calendar', GuestCalendar::class)->name('calendar.guest');
+Route::get('/admin-calendar', AdminCalendar::class)->middleware('auth')->name('calendar.admin');
+
 
 Route::middleware([
     'auth:sanctum',
