@@ -12,11 +12,11 @@ $rates_count = App\Models\Rate::all()->count();
         <a href="{{ route('promo.admin.index') }}" class="flex flex-col p-4 bg-white shadow-md rounded-md ">
             Promociones ({{$promos_count}})
         </a>
-        {{-- <a href="{{ route('galery.admin.index') }}" class="flex flex-col p-4 bg-white shadow-md rounded-md ">
-            Galería
-        </a> --}}
         <a href="{{ route('rate.admin.index') }}" class="flex flex-col p-4 bg-white shadow-md rounded-md ">
             Calificaciones ({{$rates_count}})
+        </a>
+        <a href="{{ route('calendar.admin') }}" class="flex flex-col p-4 bg-white shadow-md rounded-md ">
+            Calendario de eventos
         </a>
     </div>
 </div>

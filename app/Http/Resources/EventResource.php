@@ -16,8 +16,7 @@ class EventResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'title' => $this->eventType->name,
-            'description' => "Reservación para $this->name",
+            'title' => $this->eventType->name . " - Reservación para $this->name",
             'start' => $start->toDateTimeString(),
             'end' => $start->addHour()->toDateTimeString(),
             'name' => $this->name,
@@ -30,8 +29,10 @@ class EventResource extends JsonResource
             'how_hear_about_us' => $this->how_hear_about_us,
             'number_invites' => $this->number_invites,
             'comments' => $this->comments,
-            'start_iso' => $start->isoFormat('dddd DD MMMM, YYYY - hh:mm a'),
+            'start_iso' => $start->subHour()->isoFormat('dddd DD MMMM, YYYY - hh:mm a'),
             'end_iso' => $start->addHour()->isoFormat('hh:mm a'),
+            // 'backgroundColor' => "blue",
+            // 'display' => "block", //list-item, background, inverse-background, none
         ];
     }
 }
