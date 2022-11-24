@@ -167,7 +167,7 @@
                             aria-describedby="requirements_read" type="checkbox"
                             class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4 rounded">
                         <label for="requirements_read" class="text-sm ml-3 font-medium text-gray-900">
-                            He leido los <a href="/" class="text-blue-400 underline">requisitos</a> para saber
+                            He leido los <a href="{{ asset('pdfs/requisitos.pdf') }}" target="_blank" class="text-blue-400 underline">requisitos</a> para saber
                             si
                             pueden servir mi
                             evento.
