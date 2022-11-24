@@ -69,7 +69,7 @@ Route::resource('/events', MBEventController::class);
 // Route::get('/all-events', [MBEventController::class, 'showAll']);
 
 Route::get('/calendar', GuestCalendar::class)->name('calendar.guest');
-Route::get('/admin-calendar', AdminCalendar::class)->name('calendar.admin');
+Route::get('/admin-calendar', AdminCalendar::class)->middleware('auth')->name('calendar.admin');
 
 
 Route::middleware([

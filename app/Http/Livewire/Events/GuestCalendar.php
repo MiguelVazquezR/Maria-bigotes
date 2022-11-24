@@ -12,6 +12,9 @@ use Livewire\Component;
 class GuestCalendar extends Component
 {
     public $open_modal = false,
+        $open_auth_modal = false,
+        $auth_data,
+        $is_auth = false,
         $event_id,
         $name,
         $phone_number,
@@ -24,16 +27,18 @@ class GuestCalendar extends Component
         $service_type_id,
         $pack_type_id,
         $number_invites = 20,
-        $requirements_read = 0,
+        $requirements_read,
         $taste_our_specials = 0,
         $how_hear_about_us,
         $comments,
         $show_event = false,
-        $show_confirmation_modal = false;
+        $show_confirmation_modal = false,
+        $is_event = false,
+        $event_selected;
 
     protected $listeners = [
         'openModal',
-        'setInfo'
+        'openAuthModal'
     ];
 
     protected $rules = [
@@ -49,15 +54,28 @@ class GuestCalendar extends Component
         'how_hear_about_us' => 'required',
         'number_invites' => 'required|numeric|min:20|max:400',
         'comments' => 'max:191',
+        'requirements_read' => 'required',
+    ];
+
+    protected $auth_rules = [
+        'auth_data' => 'required',
     ];
 
     public function openModal($info)
     {
         $this->reset();
+        $this->is_event = MBEvent::whereDate('event_date', $info['dateStr'])->count();
         $this->open_modal = true;
         $this->event_date = Carbon::parse($info['dateStr']);
     }
-    
+
+    public function openAuthModal($event)
+    {
+        $this->event_selected = $event;
+        $this->reset('auth_data');
+        $this->open_auth_modal = true;
+    }
+
     public function setInfo($event)
     {
         $this->event_id = $event['id'];
@@ -73,7 +91,6 @@ class GuestCalendar extends Component
         $this->comments = $event['extendedProps']['comments'];
         $this->event_start = $event['extendedProps']['start_iso'];
         $this->event_end = $event['extendedProps']['end_iso'];
-        $this->show_event = true;
     }
 
     public function store()
@@ -82,13 +99,31 @@ class GuestCalendar extends Component
         MBEvent::create($validated);
         $this->reset();
     }
-    
+
+    public function verify()
+    {
+        $this->reset('is_auth');
+        $this->validate($this->auth_rules);
+        if (MBEvent::where('id', $this->event_selected['id'])
+            ->where(function ($q) {
+                $q->Where('name', $this->auth_data)
+                    ->orWhere('phone_number', $this->auth_data);
+            })
+            ->count()
+        ) {
+            $this->setInfo($this->event_selected);
+            $this->is_auth = true;
+        }
+        $this->show_event = true;
+        $this->open_auth_modal = false;
+    }
+
     public function delete()
     {
         MBEvent::find($this->event_id)->delete();
         $this->reset();
     }
-    
+
     public function render()
     {
         $this->emit('reset-calendar');

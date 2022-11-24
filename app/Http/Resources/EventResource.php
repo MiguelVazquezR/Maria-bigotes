@@ -7,6 +7,7 @@ use App\Models\PackType;
 use App\Models\ServiceType;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Auth;
 
 class EventResource extends JsonResource
 {
@@ -16,9 +17,13 @@ class EventResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'title' => $this->eventType->name . " - Reservación para $this->name",
+            'title' => auth()->id() ? $this->eventType->name . " - Reservación para $this->name" : 'Reservado',
             'start' => $start->toDateTimeString(),
             'end' => $start->addHour()->toDateTimeString(),
+            'can_show_details' => auth()->id() ? true : false,
+            'color' => auth()->id() ? 'blue' : 'red',
+            'textColor' => '#FFFFFF',
+            'allDay' => !auth()->id(),
             'name' => $this->name,
             'phone_number' => $this->name,
             'address' => $this->address,
@@ -31,8 +36,6 @@ class EventResource extends JsonResource
             'comments' => $this->comments,
             'start_iso' => $start->subHour()->isoFormat('dddd DD MMMM, YYYY - hh:mm a'),
             'end_iso' => $start->addHour()->isoFormat('hh:mm a'),
-            // 'backgroundColor' => "blue",
-            // 'display' => "block", //list-item, background, inverse-background, none
         ];
     }
 }

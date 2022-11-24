@@ -24,6 +24,7 @@ class CreateRate extends Component
 
         Rate::create($validated);
         $this->reset();
+        return redirect('/');
     }
 
     public function render()

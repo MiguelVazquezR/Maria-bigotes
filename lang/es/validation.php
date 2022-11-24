@@ -138,6 +138,7 @@ return [
     ],
     'attributes' => [
         'name' => 'nombre',
+        'last_names' => 'apellidos',
         'age' => 'edad',
         'title' => 'título',
         'description' => 'descripción',
@@ -162,5 +163,6 @@ return [
         'pack_type_id' => 'platillos',
         'number_invites' => 'número de invitados',
         'how_hear_about_us' => 'cómo te enteraste de nosotros',
+        'requirements_read' => 'requerimientos leídos',
     ],
 ];
