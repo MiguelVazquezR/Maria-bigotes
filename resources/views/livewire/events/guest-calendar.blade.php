@@ -113,6 +113,7 @@
                         <x-jet-label value="Hora del servicio" />
                         <select wire:model.defer="event_start" class="input" required>
                             <option value="">-- Seleccione --</option>
+                            <option value="12:00">12pm a 1pm</option>
                             <option value="13:00">1pm a 2pm</option>
                             <option value="14:00">2pm a 3pm</option>
                             <option value="15:00">3pm a 4pm</option>

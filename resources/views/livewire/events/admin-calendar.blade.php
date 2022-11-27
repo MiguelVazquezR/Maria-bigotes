@@ -39,7 +39,7 @@
             </div>
             <div>
                 <x-jet-label value="Platillos" />
-                <p class="text-[10px] tetx-gray-500">{{ $pack_type_id }}</p>                
+                <p class="text-[10px] tetx-gray-500">{{ $pack_type_id }}</p>
             </div>
             <div>
                 <x-jet-label value="Número exacto de invitados" />
@@ -50,7 +50,8 @@
                 <p class="text-[10px] tetx-gray-500">{{ $comments ?? '--' }}</p>
             </div>
             <div class="text-right">
-                <button wire:click="$set('show_confirmation_modal', true)" class="btn-danger mt-3">Eliminar reservación</button>
+                <button wire:click="$set('show_confirmation_modal', true)" class="btn-danger mt-3">Eliminar
+                    reservación</button>
             </div>
         </div>
     @endif
@@ -72,7 +73,8 @@
 
     <x-jet-dialog-modal wire:model="open_modal">
         <x-slot name="title">
-            <p class="font-bold text-xl">Reservar el <span class="text-blue-700">{{ $event_date?->isoFormat('dddd DD MMM, YYYY') }}</span></p>
+            <p class="font-bold text-xl">Reservar el <span
+                    class="text-blue-700">{{ $event_date?->isoFormat('dddd DD MMM, YYYY') }}</span></p>
         </x-slot>
         <x-slot name="content">
             <form wire:submit.prevent>
@@ -100,6 +102,7 @@
                     <x-jet-label value="Hora del servicio" />
                     <select wire:model.defer="event_start" class="input" required>
                         <option value="">-- Seleccione --</option>
+                        <option value="12:00">12pm a 1pm</option>
                         <option value="13:00">1pm a 2pm</option>
                         <option value="14:00">2pm a 3pm</option>
                         <option value="15:00">3pm a 4pm</option>
@@ -138,7 +141,7 @@
                     <select wire:model.defer="pack_type_id" class="input" required>
                         <option value="">-- Seleccione --</option>
                         @foreach ($packs as $item)
-                            <option value="{{$item->id}}">{{$item->name}}</option>
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
                     </select>
                     <x-input-error for="pack_type_id" />
