@@ -63,7 +63,7 @@ Route::get('/rates/admin', IndexRate::class)->middleware('auth')->name('rate.adm
 
 Route::post('/process-payment', [PaymentController::class, 'processPay']);
 Route::get('/payment-error', [PaymentController::class, 'error'])->name('payment.error');
-Route::get('/payment-success', [PaymentController::class, 'success'])->name('payment.success');
+Route::get('/payment-success/{order}', [PaymentController::class, 'success'])->name('payment.success');
 
 Route::resource('/events', MBEventController::class);
 // Route::get('/all-events', [MBEventController::class, 'showAll']);

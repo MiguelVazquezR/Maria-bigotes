@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -10,6 +12,7 @@ class PaymentController extends Controller
 {
     public function processPay(Request $request)
     {
+        // dd($request->all());
         $user = User::firstOrCreate(
             ['email' =>  $request->email,],
             [
@@ -24,12 +27,17 @@ class PaymentController extends Controller
         }
 
         try {
+            $order = Order::create($request->order_data + ['name' => $request->name, 'email' => $request->email]);
+            foreach($request->products as $product) {
+                $order->products()->attach($product['product_id'], ['quantity' => $product['quantity'], 'notes' => $product['notes']]);
+            }
             $user->charge($request->total * 100, $request->paymentMethod);
         } catch (Exception $e) {
+            dd($e);
             return response()->json(['route' => route('payment.error'), 'success' => false]);
         }
 
-        return response()->json(['route' => route('payment.success'), 'success' => true]);
+        return response()->json(['route' => route('payment.success', $order), 'success' => true]);
     }
 
     public function error()
@@ -37,9 +45,9 @@ class PaymentController extends Controller
         return view('payment.error');
     }
     
-    public function success()
+    public function success(Order $order)
     {
-        return view('payment.success');
+        return view('payment.success', compact('order'));
     }
 
 }

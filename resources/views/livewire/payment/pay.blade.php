@@ -24,6 +24,6 @@
             </div>
             <p class="font-bold text-right mt-1">Total ${{ number_format($total, 2) }}</p>
         </div>
-        @livewire('payment.process-payment', ['total' => $total])
+        @livewire('payment.process-payment', ['total' => $total, 'products' => $cart_items])
     @endif
 </div>

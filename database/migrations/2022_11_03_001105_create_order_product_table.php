@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedSmallInteger('quantity');
+            $table->string('notes');
             $table->foreignId('order_id')->constrained();
             $table->foreignId('product_id')->constrained();
 

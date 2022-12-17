@@ -9,10 +9,16 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'last_names', 'email', 'phone', 'street', 'number', 'city'];
+    protected $fillable = ['name', 'email', 'phone', 'address', 'postal_code', 'city'];
 
     public function products()
     {
-        return $this->belongsToMany(Product::class)->withPivot('quantity');
+        return $this->belongsToMany(Product::class)->withPivot(['quantity', 'notes'])->withTimestamps();
     }
+
+    public function fullAddress()
+    {
+        return "$this->address, $this->city CP: $this->postal_code";
+    }
+
 }

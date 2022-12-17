@@ -1,7 +1,9 @@
 <div>
     {{-- stripe --}}
-    <div class="border-2 border-gray-300 rounded-md px-4 py-2 my-4 dark:bg-slate-800 dark:text-gray-300 relative">
-        <div id="spinner" class="absolute top-0 right-0 w-full h-full bg-gray-100 bg-opacity-30 justify-center items-center" style="display: none;">
+    <div class="border-2 border-gray-300 rounded-md px-4 py-2 mb-20 mt-4 dark:bg-slate-800 dark:text-gray-300 relative">
+        <div id="spinner"
+            class="absolute top-0 right-0 w-full h-full bg-gray-100 bg-opacity-30 justify-center items-center"
+            style="display: none;">
             <x-spinner size="16" />
         </div>
         <div class="lg:flex justify-between items-center">
@@ -10,12 +12,29 @@
         </div>
         <form id="card-form">
             <div class="mt-3">
+                <x-jet-label class="dark:text-gray-300" value="Teléfono" />
+                <input id="phone" class="input w-full mb-3 dark:text-gray-300" type="text" required />
+            </div>
+            <div class="mt-3">
+                <x-jet-label class="dark:text-gray-300" value="Dirección" />
+                <input id="address" class="input w-full mb-3 dark:text-gray-300" type="text"
+                    placeholder="Calle, número y colonia" required />
+            </div>
+            <div class="mt-3">
+                <x-jet-label class="dark:text-gray-300" value="Código postal" />
+                <input id="postal_code" class="input w-full mb-3 dark:text-gray-300" type="number" required />
+            </div>
+            <div class="mt-3">
+                <x-jet-label class="dark:text-gray-300" value="Ciudad" />
+                <input id="city" class="input w-full mb-3 dark:text-gray-300" type="text" required />
+            </div>
+            <div class="mt-3">
                 <x-jet-label class="dark:text-gray-300" value="Correo electrónico" />
                 <input id="email" class="input w-full mb-3 dark:text-gray-300" type="email"
                     placeholder="Ingrese un correo al que tenga acceso" required />
             </div>
             <div class="mt-3">
-                <x-jet-label class="dark:text-gray-300" value="Nombre de titular de la tarjeta" />
+                <x-jet-label class="dark:text-gray-300" value="Nombre completo de titular de la tarjeta" />
                 <input id="card-holder-name" class="input w-full mb-3 dark:text-gray-300" type="text"
                     placeholder="Ingrese el nombre del titular de la tarjeta" required />
             </div>
@@ -75,13 +94,20 @@
                     paymentMethod: paymentMethod.id,
                     email: document.getElementById('email').value,
                     name: document.getElementById('card-holder-name').value,
+                    order_data: {
+                        phone: document.getElementById('phone').value,
+                        address: document.getElementById('address').value,
+                        postal_code: document.getElementById('postal_code').value,
+                        city: document.getElementById('city').value,
+                    },
+                    products: JSON.parse(localStorage.getItem('m_b_cart')),
                     total: {{ $total }},
-                }).then((response) => { 
-                    if(response.data.success)
+                }).then((response) => {
+                    if (response.data.success)
                         localStorage.removeItem('m_b_cart');
-                        
+
                     window.location.replace(response.data.route);
-                 });
+                });
             }
         });
     </script>

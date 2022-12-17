@@ -16,13 +16,12 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name', 50);
-            $table->string('last_names', 50);
+            $table->string('name', 80);
             $table->string('email', 60)->unique();
             $table->string('phone', 15);
-            $table->string('street', 60);
-            $table->string('number', 10);
+            $table->string('address', 60);
             $table->string('city', 50);
+            $table->string('postal_code', 5);
 
             $table->timestamps();
         });
