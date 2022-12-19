@@ -2,6 +2,7 @@
 $products_count = App\Models\Product::all()->count();
 $promos_count = App\Models\Promo::all()->count();
 $rates_count = App\Models\Rate::all()->count();
+$orders_count = App\Models\Order::whereNull('shipped_at')->get('id')->count();
 @endphp
 
 <div class="p-6 sm:px-20 border-gray-200">
@@ -17,6 +18,9 @@ $rates_count = App\Models\Rate::all()->count();
         </a>
         <a href="{{ route('calendar.admin') }}" class="flex flex-col p-4 bg-white shadow-md rounded-md ">
             Calendario de eventos
+        </a>
+        <a href="{{ route('orders.index') }}" class="col-span-full flex flex-col p-4 bg-white shadow-md rounded-md ">
+            Órdenes <strong class="text-red-600 inline">({{$orders_count}} sin despachar)</strong>
         </a>
     </div>
 </div>

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('address', 60);
             $table->string('city', 50);
             $table->string('postal_code', 5);
+            $table->timestamp('shipped_at')->nullable();
 
             $table->timestamps();
         });

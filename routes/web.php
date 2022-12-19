@@ -16,6 +16,8 @@ use App\Http\Livewire\Menu\Admin\IndexMenu;
 use App\Http\Livewire\Menu\Menu;
 use App\Http\Livewire\Rate\CreateRate;
 use App\Http\Livewire\OrderNow\SelectedProduct;
+use App\Http\Livewire\Orders\Admin\IndexOrders;
+use App\Http\Livewire\Orders\Admin\ShowOrders;
 use App\Http\Livewire\Payment\Pay;
 use App\Http\Livewire\Promo\Admin\CreatePromo;
 use App\Http\Livewire\Promo\Admin\EditPromo;
@@ -66,6 +68,8 @@ Route::get('/payment-error', [PaymentController::class, 'error'])->name('payment
 Route::get('/payment-success/{order}', [PaymentController::class, 'success'])->name('payment.success');
 
 Route::resource('/events', MBEventController::class);
+Route::get('/orders', IndexOrders::class)->middleware('auth')->name('orders.index');
+Route::get('/orders/show/{order}', ShowOrders::class)->middleware('auth')->name('orders.show');
 // Route::get('/all-events', [MBEventController::class, 'showAll']);
 
 Route::get('/calendar', GuestCalendar::class)->name('calendar.guest');
