@@ -12,7 +12,6 @@ class PaymentController extends Controller
 {
     public function processPay(Request $request)
     {
-        // dd($request->all());
         $user = User::firstOrCreate(
             ['email' =>  $request->email,],
             [
@@ -33,7 +32,6 @@ class PaymentController extends Controller
             }
             $user->charge($request->total * 100, $request->paymentMethod);
         } catch (Exception $e) {
-            dd($e);
             return response()->json(['route' => route('payment.error'), 'success' => false]);
         }
 
