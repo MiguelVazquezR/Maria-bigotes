@@ -45,7 +45,8 @@
             Eliminar elemento del menú
         </x-slot>
         <x-slot name="content">
-            ¿Seguro(a) que desea eliminar este elemento del menú?
+            ¿Seguro(a) que desea eliminar este elemento del menú? 
+            También se eliminará de las ordenes que lo contengan 
         </x-slot>
         <x-slot name="footer">
             <div class="flex justify-end">

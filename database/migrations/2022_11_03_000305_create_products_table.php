@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name', 50)->unique();
             $table->text('description');
             $table->float('price', 8, 2, true);
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
 
             $table->timestamps();
         });

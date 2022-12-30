@@ -17,14 +17,20 @@ class ShowCart extends Component
 
     public function syncCartItems($items)
     {
-        foreach ($items as $item) {
+        foreach ($items as $index => $item) {
             $product = Product::find($item['product_id']);
-            $this->cart_items[] = [
-                'product' => $product,
-                'quantity' => $item['quantity'],
-                'notes' => $item['notes'],
-            ];
-            $this->total += $product->price * $item['quantity'];
+            if($product) {
+                $this->cart_items[] = [
+                    'product' => $product,
+                    'quantity' => $item['quantity'],
+                    'notes' => $item['notes'],
+                ];
+                $this->total += $product->price * $item['quantity'];
+            } else {
+                $this->cart_items[] = [
+                    'product' => null,
+                ];
+            }
         }
         $this->loading = false;
     }

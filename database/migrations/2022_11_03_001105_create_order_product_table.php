@@ -18,8 +18,8 @@ return new class extends Migration
 
             $table->unsignedSmallInteger('quantity');
             $table->string('notes')->nullable();
-            $table->foreignId('order_id')->constrained();
-            $table->foreignId('product_id')->constrained();
+            $table->foreignId('order_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('product_id')->constrained()->cascadeOnDelete();
 
             $table->timestamps();
         });
