@@ -26,11 +26,11 @@ class PaymentController extends Controller
         }
 
         try {
+            $user->charge($request->total * 100, $request->paymentMethod);
             $order = Order::create($request->order_data + ['name' => $request->name, 'email' => $request->email]);
             foreach($request->products as $product) {
                 $order->products()->attach($product['product_id'], ['quantity' => $product['quantity'], 'notes' => $product['notes']]);
             }
-            $user->charge($request->total * 100, $request->paymentMethod);
         } catch (Exception $e) {
             return response()->json(['route' => route('payment.error'), 'success' => false]);
         }
